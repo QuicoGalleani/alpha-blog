@@ -1,11 +1,41 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
   <%= link_to "Alpha blog", root_path, class: "navbar-brand", id: "logo" %>
-  <ul class="navbar-nav mr-auto">
-    <li><%= link_to "Articles", articles_path, class: "nav-item", id: "article" %></li>
-    <li><%= link_to "About", about_path, class: "nav-item", id: "about" %></li>
-  </ul>
-  <form class="form-inline my-2 my-lg-0" id="search_form">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a><%= link_to "Articles", articles_path, class: "nav-link", id: "article" %><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a><%= link_to "About", about_path, class: "nav-link", id: "about" %></a>
+      </li>
+      <% if logged_in? %>
+        <li class="nav-item">
+          <a><%= link_to "Log out", logout_path, method: :delete, class: "nav-link", id: "logout" %></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Your Profile
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"><%= link_to "Edit your profile", edit_user_path(current_user) %></a>
+            <a class="dropdown-item"><%= link_to "View your profile", user_path(current_user) %></a>
+            <a class="dropdown-item">Something Else here</a>
+          </div>
+      <% else %>
+        <li class="nav-item">
+          <a><%= link_to "Sign up", signup_path, class: "nav-link", id: "signup" %></a>
+        </li>
+        <li class="nav-item">
+          <a><%= link_to "Login", login_path, class: "nav-link", id: "login" %></a>
+        </li>
+      <% end %>
+    </ul>
+    <form class="form-inline my-auto" id="search_form">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
 </nav>

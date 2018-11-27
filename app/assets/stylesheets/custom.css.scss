@@ -1,5 +1,3 @@
-$navbar-default-bg: black;
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -10,7 +8,6 @@ $navbar-default-bg: black;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
-  vertical-align: middle;
 }
 
 #logo:hover {
@@ -30,21 +27,21 @@ $navbar-default-bg: black;
 
 .navbar {
   background-color: black;
-  height: 75px;
 }
 
-.nav-item {
+.nav-link {
   color: #fff;
   font-size: 1.5em;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
   float: left;
+  margin-top: 10px;
   margin-left: 15px;
   vertical-align: middle;
 }
 
-.nav-item:hover {
+.nav-link:hover {
   color: red;
   text-decoration: none;
 }
